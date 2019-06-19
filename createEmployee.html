@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Create Employee Record" icon-name="standard:record">
+        <div class="slds-m-around_medium">
+            <lightning-record-edit-form object-api-name={employeeObject} onsuccess={handleSuccess}
+                onerror={handleError}>
+
+
+                <lightning-input-field field-name={firstnameField}></lightning-input-field>
+                <lightning-input-field field-name={lastnameField}></lightning-input-field>
+                <lightning-input-field field-name={phoneField}></lightning-input-field>
+                <div class="slds-align_absolute-center slds-p-around_medium">
+                    <lightning-button class="slds-m-around_xx-small" label="Cancel" onclick={handleReset}>
+                    </lightning-button>
+                    <lightning-button class="slds-m-around_xx-small" type="submit" variant="brand" label="Create">
+                    </lightning-button>
+                </div>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>

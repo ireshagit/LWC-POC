@@ -1,0 +1,43 @@
+<template>
+   <lightning-card>
+      <div class="slds-theme_default">
+         <template if:true={openmodel}>
+            <div class="employee-data">
+               <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                  aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                  <div class="slds-modal__container">
+                     <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                           title="Close" onclick={closeModal}>
+                           <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                              size="small"></lightning-icon>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Update Employee
+                           Details</h2>
+                     </header>
+                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <template if:true={emp.data}>
+                           <lightning-input label="Employee ID" disabled value={emp.data.Name}></lightning-input>
+                           <lightning-input label="First Name" value={emp.data.First_Name__c} data-field="First_Name__c"
+                              class="slds-m-bottom_x-small"></lightning-input>
+                           <lightning-input label="Last Name" value={emp.data.Last_Name__c} data-field="Last_Name__c"
+                              class="slds-m-bottom_x-small"></lightning-input>
+                           <lightning-input label="Phone" value={emp.data.Phone__c} data-field="Phone__c"
+                              class="slds-m-bottom_x-small"></lightning-input>
+                           <lightning-button class="slds-float--left" label="Close" variant="brand" onclick={closeModal}>
+                           </lightning-button>
+                           &emsp;<!--to keep 4 spaces-->
+                           <lightning-button label="Update Employee" variant="brand" onclick={updateEmployee}>
+                           </lightning-button>
+                        </template>
+                     </div>
+                     <footer class="slds-modal__footer">                       
+                     </footer>
+                  </div>
+               </section>
+               <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+         </template>
+      </div>
+   </lightning-card>
+</template>

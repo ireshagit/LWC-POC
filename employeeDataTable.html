@@ -1,0 +1,74 @@
+<template>
+    <lightning-card>
+        <!--lightning datatable-->
+         <lightning-datatable 
+               key-field="id"
+               data={parameters.data}
+               onrowaction={handleRowAction}
+               row-number-offset={rowOffset}
+               hide-checkbox-column="true"
+               columns={columns}></lightning-datatable>
+                  
+           <!-- Detail view modal start -->
+         <template if:true={bShowModal}>
+          <section role="dialog" tabindex="-1"
+                   aria-labelledby="modal-heading-01"
+                   aria-modal="true"
+                   aria-describedby="modal-content-id-1"
+                  class="slds-modal slds-fade-in-open">
+             <div class="slds-modal__container">
+                <!-- modal header start -->
+                <header class="slds-modal__header">
+                   <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                      <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon>
+                   </button>
+                   <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Employee Detail</h2>
+                </header>
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                  <dl class="slds-list_horizontal slds-wrap">
+                      <dt class="slds-item_label slds-truncate" title="Name">First Name:</dt>
+                      <dd class="slds-item_detail slds-truncate">{record.First_Name__c}</dd>
+                      <dt class="slds-item_label slds-truncate" title="LName">Last Name:</dt>
+                      <dd class="slds-item_detail slds-truncate">{record.Last_Name__c}</dd>
+                      <dt class="slds-item_label slds-truncate" title="Phone">Phone Number:</dt>
+                      <dd class="slds-item_detail slds-truncate">{record.Phone__c}</dd>
+                  </dl>
+                </div>
+                <!-- modal footer start-->
+                <footer class="slds-modal__footer">
+    
+                   <lightning-button-icon class="slds-float--right" icon-name="utility:record_delete"  variant="brand"
+                      onclick={deleteContact} 
+                      title="Delete Record"  
+                      data-id={record.Id} 
+                      data-recordid={record.Id}>
+    
+                   </lightning-button-icon>
+
+                   &emsp; &emsp;
+
+                   <lightning-button-icon class="slds-float--right" icon-name="utility:record_update"  variant="brand"
+                   onclick={updateEmployee} 
+                   title="Update Record"  
+                   data-id={record.Id} 
+                   data-recordid={record.Id}>
+                   
+                </lightning-button-icon>
+
+                   &nbsp; &nbsp;  
+    
+                   <lightning-button class="slds-float--left" variant="brand"
+                     label="Close"
+                     title="Close"
+                     onclick={closeModal}
+                     ></lightning-button>
+    
+                </footer>
+             </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open"></div>
+       </template>
+       <!-- Detail view modal end -->
+    </lightning-card> 
+      </template>
